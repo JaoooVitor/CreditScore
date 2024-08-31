@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Predição</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        table, th, td {
+            border: 1px solid #dddddd;
+        }
+        th, td {
+            padding: 12px;
+        }
+        th {
+            background-color: #3700B3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Resultado da Predição</h2>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td>Classificação de Crédito</td>
+            <td>{{ resultado['classification'] }}</td>
+        </tr>
+        <tr>
+            <td>Probabilidade de Baixo Crédito</td>
+            <td>{{ (resultado['probability_baixo'] * 100) | round(2) }}%</td>
+        </tr>
+        <tr>
+            <td>Probabilidade de Médio Crédito</td>
+            <td>{{ (resultado['probability_medio'] * 100) | round(2) }}%</td>
+        </tr>
+        <tr>
+            <td>Probabilidade de Alto Crédito</td>
+            <td>{{ (resultado['probability_alto'] * 100) | round(2) }}%</td>
+        </tr>
+    </table>
+</body>
+</html>
